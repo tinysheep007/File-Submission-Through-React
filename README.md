@@ -1,3 +1,21 @@
+## Port is at 3006 and not 3000! To avoid conflict with the backend API which is usually hosted on 3000
+
+# How to Test it out?
+
+-first you have to start the backend ofc. You can find the code of express and how to start in other repo of convert base 64 
+at https://github.com/tinysheep007/Convert-Photo-to-Base64-and-backward-backend-endpoints-with-html-template
+
+-now we can start the front end
+
+```
+npm start
+```
+
+Find the ```New Apporach``` section and choose the first select file button and pick your photo
+click the ```submit to api``` button and now you can check if your endpoint received it.
+
+-the second file picker under the ```New Approach``` section allow you to preview the photo in browser
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -9,7 +27,7 @@ In the project directory, you can run:
 ### `npm start`
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Open [http://localhost:3000](http://localhost:3006) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
