@@ -10,7 +10,6 @@ export default function NewApproach() {
     const onImageChange = (event) => {
         if (event.target.files && event.target.files[0]) {
             setImage(URL.createObjectURL(event.target.files[0]));
-
         }
     }
 
@@ -48,7 +47,6 @@ export default function NewApproach() {
     }
 
     const handleSubmission = () => {
-
         axios({
             method: 'post',
             url: "http://localhost:3000/base64",
@@ -65,7 +63,7 @@ export default function NewApproach() {
 
     return (
         <div>
-            <p>
+            <div>
                 new Approach to convert to base 64
                 <div>
                     <input
@@ -83,7 +81,7 @@ export default function NewApproach() {
                         onChange={onImageChange}
                     />
                 </div>
-            </p>
+            </div>
         </div>
     )
 }

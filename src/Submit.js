@@ -16,6 +16,16 @@ export default function Submit() {
         console.log(selectedFile);
     };
 
+    const whatsinNPM64 = () =>{
+        imageToBase64('./cat.jpg') // Path to the image
+            .then(
+                (response) => {
+                    console.log(response); // "cGF0aC90by9maWxlLmpwZw=="
+                    setBase64(response)
+                }
+            )
+    }
+
     const handleSubmission = () => {
         imageToBase64(`./${selectedFile.name}`) // Path to the image
             .then(
@@ -65,6 +75,10 @@ export default function Submit() {
             <h2>Submit Your Files Here</h2>
             <div>
                 <input type="file" name="file" onChange={changeHandler} />
+            </div>
+
+            <div>
+                <button onClick={whatsinNPM64}>What's in base 64 using NPM module</button>
             </div>
 
             {isFilePicked ? (
