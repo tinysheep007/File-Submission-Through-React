@@ -64,7 +64,10 @@ export default function NewApproach() {
     return (
         <div>
             <div>
-                new Approach to convert to base 64
+                <h1>
+                    new Approach to convert to base 64
+                </h1>
+                
                 <div>
                     <input
                         type="file"

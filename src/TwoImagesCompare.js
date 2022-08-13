@@ -86,6 +86,8 @@ export default function TwoImagesCompare() {
 
     return (
         <div>
+
+            <h2>Compare Pictures Here! </h2>
             <div style={{width:"50%",float:"left"}}>
                 Image 1 Upload
                 <div>
