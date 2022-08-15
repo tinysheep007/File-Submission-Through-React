@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from 'axios';
+import { Button } from "@mui/material";
 
 export default function NewApproach() {
     const [file, setFile] = useState(null);
@@ -65,16 +66,43 @@ export default function NewApproach() {
         <div>
             <div>
                 <h1>
-                    new Approach to convert to base 64
+                    New Approach to Convert to Base 64
                 </h1>
-                
+
+
+                <div>
+                    <p>
+                        The First File selection does not display the image when you attach it
+                    </p>
+                    <p>
+                        The Second File selection does display image after you attach it
+                    </p>
+
+                    <p>
+                        Check If Pure Button will display your converted base64 content on your console
+                    </p>
+
+                    <p>
+                        You will need a express backend for the API call / check NewApproach.js for params
+                    </p>
+
+                    <p>
+                        The backend code can be found at https://github.com/tinysheep007/Convert-Photo-to-Base64-and-backward-backend-endpoints-with-html-template
+                    </p>
+
+
+                </div>
+
+
+
+
                 <div>
                     <input
                         type="file"
                         onChange={handleChange}
                     />
-                    <button onClick={handleSubmission}>Submit to API</button>
-                    <button onClick={checkIfPure}>Check if pure</button>
+                    <Button variant="contained" onClick={handleSubmission}>Submit to API</Button>
+                    <Button color="secondary" onClick={checkIfPure}>Check if pure</Button>
                 </div>
 
                 <div>

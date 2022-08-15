@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from 'axios';
+import { Button } from "@mui/material";
 
 export default function TwoImagesCompare() {
 
@@ -88,6 +89,25 @@ export default function TwoImagesCompare() {
         <div>
 
             <h2>Compare Pictures Here! </h2>
+            <div>
+                <p>
+                    When you upload a picture, its base64 format will be displayed on console
+                </p>
+
+                <p>
+                    In order to test your file submission, please go clone my other express backend code
+                    at https://github.com/tinysheep007/flask-convert-base64-to-photo
+                </p>
+
+                <p>
+                    All running instructions are provided there
+                </p>
+
+                <p>
+                    For API parameter check TwoIamgesCompare.js
+                </p>
+
+            </div>
             <div style={{width:"50%",float:"left"}}>
                 Image 1 Upload
                 <div>
@@ -105,8 +125,8 @@ export default function TwoImagesCompare() {
                 <img src={pic2} style={{ border:"5px solid pink", width:"300px", height:"300px" }}/>
             </div>
 
-            <button onClick={handleSubmission}>Compare Two Images</button>
-
+            
+            <Button variant="contained" color="success" onClick={handleSubmission}>Compare Two Images</Button>
             <div>
                 display results below
                 {result}

@@ -1,11 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
-import Submit from './Submit';
-import NewApproach from './NewApproach';
-import TwoImagesCompare from './TwoImagesCompare';
-import Navbar from './Navbar';
+import Submit from './Components/Submit';
+import NewApproach from './Components/NewApproach';
+import TwoImagesCompare from './Components/TwoImagesCompare';
+import Navbar from './Components/Navbar';
 import { Route,Routes } from 'react-router-dom';
-import Home from './Home';
+import Home from './Components/Home';
 
 function App() {
 

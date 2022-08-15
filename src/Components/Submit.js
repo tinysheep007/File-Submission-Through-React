@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import imageToBase64 from 'image-to-base64/browser';
 import axios from 'axios';
+import { Button } from '@mui/material';
 
 export default function Submit() {
     const [selectedFile, setSelectedFile] = useState();
@@ -16,7 +17,7 @@ export default function Submit() {
         console.log(selectedFile);
     };
 
-    const whatsinNPM64 = () =>{
+    const whatsinNPM64 = () => {
         imageToBase64('./cat.jpg') // Path to the image
             .then(
                 (response) => {
@@ -73,12 +74,22 @@ export default function Submit() {
     return (
         <div>
             <h2>Submit Your Files Here</h2>
+
+            <div>
+                <p>
+                    Used NPM module imageToBase64 libaray to convert
+                </p>
+            </div>
+
             <div>
                 <input type="file" name="file" onChange={changeHandler} />
             </div>
 
             <div>
-                <button onClick={whatsinNPM64}>What's in base 64 using NPM module</button>
+                <Button variant="contained" onClick={whatsinNPM64} style={{ marginTop: "10px" }} >NPM: Show base 64 format of the cat.jpg
+                    <div>Results will be logged on console</div>
+                </Button>
+
             </div>
 
             {isFilePicked ? (
@@ -95,7 +106,7 @@ export default function Submit() {
                 <p>Select a file to show details</p>
             )}
             <div>
-                <button onClick={checkSelection}>Check What's in Current Selection In Conosle</button>
+                <Button onClick={checkSelection} >Check What's in Current Selection In Conosle</Button>
             </div>
 
             <div>
