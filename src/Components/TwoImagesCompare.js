@@ -15,6 +15,9 @@ export default function TwoImagesCompare() {
     const [sampleUUID, setSampleUUID] = useState();
     const [id1, setId1] = useState(1);
     const [id2, setId2] = useState(2);
+    const [b1Click, setB1click] = useState(false);
+    const [b2Click, setB2click] = useState(false);
+
 
     const onChangePic1 = (event) => {
         if (event.target.files && event.target.files[0]) {
@@ -129,9 +132,17 @@ export default function TwoImagesCompare() {
 
 
                 <div>
-                    <input type="file" onChange={onChangePic1} ></input>
+                    <input style={{ margin: "10px" }} type="file" onChange={onChangePic1} ></input>
                 </div>
                 <img src={pic1} style={{ border: "5px solid red", width: "300px", height: "300px" }} />
+                <div>UUID FOR PIC1 : {id1}</div>
+                <Button onClick={() => setB1click(!b1Click)}>Show / Hide base64</Button>
+                {
+                    b1Click ? (<div style={{ textAlign: "center", display: "flex" }}>
+                        {pic1base64 ? (<div style={{ width: "250px", overflow: "auto" }}> {pic1base64}</div>) : ""}
+                    </div>) : ""
+                }
+
 
             </div>
 
@@ -140,16 +151,21 @@ export default function TwoImagesCompare() {
                     Image 2 Upload
                 </div>
                 <div>
-                    <input type="file" onChange={onChangePic2}></input>
+                    <input style={{ margin: "10px" }} type="file" onChange={onChangePic2}></input>
                 </div>
                 <img src={pic2} style={{ border: "5px solid pink", width: "300px", height: "300px" }} />
+                <div>UUID FOR PIC2 : {id2}</div>
+                <Button onClick={() => setB2click(!b2Click)}>Show / Hide base64</Button>
+                {
+                    b2Click ? (<div>
+                        {pic2base64 ? (<div style={{ width: "250px", overflow: "auto" }}>{pic2base64}</div>) : ""}
+                    </div>) : ""
+                }
+
+
             </div>
 
-            <Button variant="contained" onClick={generateUUID}>display UUID </Button>
-            <div>
-                <div>UUID FOR PIC1 : {id1}</div>
-                <div>UUID FOR PIC2 : {id2}</div>
-            </div>
+            <Button variant="contained" onClick={generateUUID} style={{ marginRight: "20px" }}>display UUID </Button>
 
             <Button variant="contained" color="success" onClick={handleSubmission}>Compare Two Images</Button>
             <div>
