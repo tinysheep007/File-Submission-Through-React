@@ -125,7 +125,7 @@ export default function TwoImagesCompare() {
                 </p>
 
             </div>
-            <div style={{ width: "50%", float: "left" }}>
+            <div style={{ width: "50%", float: "left", alignItems: "center", justifyContent: "center" }}>
                 <div style={{ font: "30px", fontWeight: "bold" }}>
                     Image 1 Upload
                 </div>
@@ -137,11 +137,14 @@ export default function TwoImagesCompare() {
                 <img src={pic1} style={{ border: "5px solid red", width: "300px", height: "300px" }} />
                 <div>UUID FOR PIC1 : {id1}</div>
                 <Button onClick={() => setB1click(!b1Click)}>Show / Hide base64</Button>
-                {
-                    b1Click ? (<div style={{ textAlign: "center", display: "flex" }}>
-                        {pic1base64 ? (<div style={{ width: "250px", overflow: "auto" }}> {pic1base64}</div>) : ""}
-                    </div>) : ""
-                }
+                <div>
+                    {
+                        b1Click ? (<div style={{ textAlign: "center", display: "flex" }}>
+                            {pic1base64 ? (<div style={{ width: "250px", overflow: "auto", border: "3px solid red", marginLeft: "30%" }}> {pic1base64}</div>) : ""}
+                        </div>) : ""
+                    }
+                </div>
+
 
 
             </div>
@@ -156,11 +159,15 @@ export default function TwoImagesCompare() {
                 <img src={pic2} style={{ border: "5px solid pink", width: "300px", height: "300px" }} />
                 <div>UUID FOR PIC2 : {id2}</div>
                 <Button onClick={() => setB2click(!b2Click)}>Show / Hide base64</Button>
-                {
-                    b2Click ? (<div>
-                        {pic2base64 ? (<div style={{ width: "250px", overflow: "auto" }}>{pic2base64}</div>) : ""}
-                    </div>) : ""
-                }
+
+                <div>
+                    {
+                        b2Click ? (<div>
+                            {pic2base64 ? (<div style={{ width: "250px", overflow: "auto", marginLeft: "65%", border: "3px solid pink" }}>{pic2base64}</div>) : ""}
+                        </div>) : ""
+                    }
+                </div>
+
 
 
             </div>
@@ -169,9 +176,17 @@ export default function TwoImagesCompare() {
 
             <Button variant="contained" color="success" onClick={handleSubmission}>Compare Two Images</Button>
             <div>
-                display results below
-                {result}
+                <div style={{ font: "30px", fontWeight: "bold", margin:"20px" }}>
+                    Display Results Below
+
+                </div>
+                <div >
+
+                    {result}
+
+                </div>
             </div>
+
         </div>
     )
 }

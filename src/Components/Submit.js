@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import imageToBase64 from 'image-to-base64/browser';
 import axios from 'axios';
 import { Button } from '@mui/material';
+import firstbase64 from '../firstbase64.jpg';
 
 export default function Submit() {
     const [selectedFile, setSelectedFile] = useState();
@@ -115,6 +116,8 @@ export default function Submit() {
             <button onClick={() => { console.log(selectedFile) }}>What's My selectedFile State</button>
 
             <button >Submit V2.0 to local 3000</button>
+
+            <img style={{display:"block", margin:"auto"}} src={firstbase64}/>
         </div>
     )
 

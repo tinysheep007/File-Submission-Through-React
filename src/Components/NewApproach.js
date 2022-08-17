@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from 'axios';
 import { Button } from "@mui/material";
+import filereader from '../filereader.jpg';
 
 export default function NewApproach() {
     const [file, setFile] = useState(null);
@@ -113,6 +114,9 @@ export default function NewApproach() {
                     />
                 </div>
             </div>
+            <img src={filereader}/>
+
+            
         </div>
     )
 }
