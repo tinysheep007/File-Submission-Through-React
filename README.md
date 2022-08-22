@@ -6,6 +6,8 @@
 
 ```ssh -i "name-of-your-key.pem" your-AWS-Link.com```
 
+-if you encouter unprotected key error, try look at this video https://www.youtube.com/watch?v=ZcC4Eq0a5Mw
+
 -then, access the file and run it
 
 ```cd Desktop```
