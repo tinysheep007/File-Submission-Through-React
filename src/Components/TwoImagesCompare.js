@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from 'axios';
-import { Button } from "@mui/material";
+import { Button, CircularProgress } from "@mui/material";
 import * as uuid from 'uuid';
 
 export default function TwoImagesCompare() {
@@ -13,10 +13,20 @@ export default function TwoImagesCompare() {
     const [pic2base64, setPic2base64] = useState();
     const [result, setResult] = useState();
     const [sampleUUID, setSampleUUID] = useState();
-    const [id1, setId1] = useState(1);
-    const [id2, setId2] = useState(2);
+    const [id1, setId1] = useState(uuid.v4);
+    const [id2, setId2] = useState(uuid.v4);
     const [b1Click, setB1click] = useState(false);
     const [b2Click, setB2click] = useState(false);
+    const [isLoading, setIsloading] = useState(false);
+    const [finishLoading, setFinishLoading] = useState(false);
+    const [detector_backend, setDetector_backend] = useState();
+    const [distance, setDistance] = useState();
+    const [model, setModel] = useState();
+    const [similarity_metric, setSimilarity_metric] = useState();
+    const [threshold, setThreshold] = useState();
+    const [verified, setVerified] = useState();
+
+
 
 
     const onChangePic1 = (event) => {
@@ -83,7 +93,8 @@ export default function TwoImagesCompare() {
                 pic1base64: pic1base64,
                 pic1ID: id1,
                 pic2base64: pic2base64,
-                pic2ID: id2
+                pic2ID: id2,
+                base64: pic1base64
             }
         }).then((res) => {
             //please wait for the windows prompt for guidance 
@@ -92,6 +103,49 @@ export default function TwoImagesCompare() {
         })
             .catch((err) => alert("File Upload Error"));;
     }
+
+
+    const handleAWS = (e) => {
+
+        //when first click for the call
+        //loading circles goes out
+        setIsloading(true);
+
+        axios({
+            method: 'post',
+            url: "http://100.25.137.161:8080/verify",
+            headers: {},
+            data: {
+                image1: pic1base64,
+                image2: pic2base64,
+            }
+        }).then((res) => {
+            //please wait for the windows prompt for guidance 
+            alert("File Upload success");
+            setResult(res)
+            console.log(res)
+            console.log("result: " + result);
+            console.log("data is " + res.data);
+
+            //set all relevant info
+            setDetector_backend(res.data.detector_backend);
+            setDistance(res.data.distance);
+            setModel(res.data.model);
+            setSimilarity_metric(res.data.similarity_metric);
+            setThreshold(res.data.threshold);
+            setVerified(res.data.verified);
+
+            //when the call is finished
+            setIsloading(false);
+
+            //loading its finished
+            setFinishLoading(true);
+        })
+            .catch((err) => alert("File Upload Error"));;
+
+
+    }
+
 
     const generateUUID = () => {
         setId1(uuid.v4);
@@ -175,14 +229,56 @@ export default function TwoImagesCompare() {
             <Button variant="contained" onClick={generateUUID} style={{ marginRight: "20px" }}>display UUID </Button>
 
             <Button variant="contained" color="success" onClick={handleSubmission}>Compare Two Images</Button>
+
+            <Button variant="contained" color="warning" disabled={isLoading ? true : false} onClick={handleAWS} style={{ marginLeft: "20px" }}>Test AWS EC2 INSTANCE</Button>
+
+            <Button variant="contained" color="error" onClick={() => console.log(result.data)} style={{marginLeft:"20px"}} >Check Result State</Button>
             <div>
-                <div style={{ font: "30px", fontWeight: "bold", margin:"20px" }}>
+                <div style={{ font: "30px", fontWeight: "bold", margin: "20px" }}>
                     Display Results Below
 
                 </div>
                 <div >
+                    {isLoading ? (<div>
+                        <CircularProgress color="inherit" />
+                        <div style={{ margin: "20px" }}>
+                            Usually takes about 10 seconds...
+                        </div>
+                    </div>) : (<div></div>)}
 
-                    {result}
+                    {finishLoading ? (<div>
+                        <div style={{ margin: "2.5px" }}>
+                            Detector Backend: {detector_backend}
+                        </div>
+
+                        <div style={{ margin: "2.5px" }}>
+                            Distance: {distance}
+                        </div>
+
+                        <div style={{ margin: "2.5px" }}>
+                            Model: {model}
+                        </div>
+
+                        <div style={{ margin: "2.5px" }}>
+                            Similarity Metric: {similarity_metric}
+
+                        </div>
+
+                        <div style={{ margin: "2.5px" }}>
+                            Threshold: {threshold}
+                        </div>
+
+                        <div style={{ margin: "2.5px" }}>
+                            Verified: {verified ? "true" : 'false'}
+                        </div>
+
+                    </div>) : (<div></div>)}
+
+
+
+
+
+
 
                 </div>
             </div>
