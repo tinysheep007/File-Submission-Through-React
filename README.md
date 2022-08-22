@@ -1,5 +1,24 @@
 ## Port is at 3006 and not 3000! To avoid conflict with the backend API which is usually hosted on 3000
 
+# How to test it using AWS EC2 instance
+
+-first we have to ssh into our AWS on powershell or whatever you are using. Make sure you are in the same directory as your key
+
+```ssh -i "name-of-your-key.pem" your-AWS-Link.com```
+
+-then, access the file and run it
+
+```cd Desktop```
+
+```python3 api.py```
+
+-After that,  we can go ```npm start``` our front end. Don't forget to ```npm install``` before hand
+
+-go the TwoImageCompare Page and then select two photos to test. Click the orange button to test. After the result load up, you can check it in the bottom.
+
+
+
+
 # How to Test it out?
 
 -first you have to start the backend ofc. You can find the code of express and how to start in other repo of convert base 64 
