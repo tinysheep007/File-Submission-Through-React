@@ -68,7 +68,7 @@ export default function Submit() {
         }).then((res) => {
             alert("File Upload success");
         })
-            .catch((err) => alert("File Upload Error"));;
+            .catch((err) => alert("File Upload Error"));
     };
 
 

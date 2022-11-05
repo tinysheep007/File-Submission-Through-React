@@ -94,7 +94,7 @@ export default function TwoImagesCompare() {
         //http://127.0.0.1:5000/picToBase64
         axios({
             method: 'post',
-            url: "http://127.0.0.1:5000/picToBase64",
+            url: "http://localhost:3000/picToBase64",
             headers: {},
             data: {
                 pic1base64: pic1base64,
